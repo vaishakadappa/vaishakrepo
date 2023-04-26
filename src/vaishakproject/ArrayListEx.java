@@ -16,6 +16,7 @@ public class ArrayListEx {
     }
 
     public static void main(String[] args) {
+    	System.out.println("vaishak");
         ArrayList<ArrayListEx> al = new ArrayList<ArrayListEx>();
         al.add(new ArrayListEx("vaishak", 123));
         al.add(new ArrayListEx("va", 123));
