@@ -5,6 +5,9 @@ import pdfkit
 excel_file = 'TAIY_1.5K_28Sp.xlsx'
 df = pd.read_excel(excel_file)
 
+# Use pdfkit's included wkhtmltopdf binary
+pdfkit_config = pdfkit.configuration(wkhtmltopdf=pdfkit.config.wkhtmltopdf)
+
 for index, row in df.iterrows():
     html_link = row['HTML LINK']  # Replace with the actual column name
 
@@ -15,5 +18,7 @@ for index, row in df.iterrows():
         print(f"Failed to retrieve HTML content for row {index}")
         continue
     pdf_filename = f'output_{index}.pdf'
-    pdfkit.from_file(html_content, pdf_filename)
+
+    # Convert HTML to PDF with specified options
+    pdfkit.from_file(html_content, pdf_filename, configuration=pdfkit_config)
     print(f'PDF generated for row {index}')
